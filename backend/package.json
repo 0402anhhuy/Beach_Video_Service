@@ -1,0 +1,35 @@
+{
+  "name": "expressjs",
+  "version": "1.0.0",
+  "description": "Backend API for Fullstack",
+  "keywords": [
+    "nodejs",
+    "expressjs",
+    "reactjs"
+  ],
+  "license": "ISC",
+  "author": "Nguyen Quoc Dat",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "dev": "nodemon ./src/server.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/node": "^7.29.0",
+    "@babel/preset-env": "^7.29.5",
+    "nodemon": "^3.1.14"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^4.22.2",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.1.1",
+    "mysql2": "^3.22.3",
+    "nodemailer": "^8.0.7",
+    "sequelize": "^6.37.8"
+  }
+}
