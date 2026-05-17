@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #0284c7; /* Sky blue 600 */
+    --color-primary-light: #38bdf8; /* Sky blue 400 */
+    --color-primary-dark: #0369a1; /* Sky blue 700 */
+    --color-secondary: #0ea5e9;
+    --color-ocean: #0077b6;
+    --color-surf: #e0f2fe; /* Sky blue 50 */
+}
+
+@layer base {
+    body {
+        @apply bg-surf text-gray-800 font-sans antialiased;
+    }
+}
