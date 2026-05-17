@@ -244,19 +244,26 @@ const Profile = () => {
 
                     return (
                         <div key={video.id} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
-                            <div className="aspect-video bg-gray-900 relative group">
-                                {/* Use basic HTML5 Video for preview. Pass token manually if needed, 
-                                    but since we use authMiddleware, browser <video> won't send Bearer token.
-                                    Workaround: pass token as query param for the video source in this case. */}
+                            <div className="aspect-video bg-gray-900 relative group overflow-hidden">
                                 <video 
                                     controls 
                                     className="w-full h-full object-cover"
-                                    src={`${videoUrl}?token=${token}`}
+                                    src={`${videoUrl}?token=${token}#t=0.1,10`}
                                     controlsList="nodownload"
+                                    onTimeUpdate={(e) => {
+                                        if (e.target.currentTime > 10) {
+                                            e.target.pause();
+                                            e.target.currentTime = 0.1;
+                                        }
+                                    }}
+                                    poster="" // You can add a default poster here if needed
                                 />
-                                <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-xs text-white font-medium flex items-center gap-1.5">
+                                <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-xs text-white font-medium flex items-center gap-1.5 z-10">
                                     <span className={`w-2 h-2 rounded-full ${video.activity === 'paragliding' ? 'bg-blue-400' : video.activity === 'diving' ? 'bg-teal-400' : 'bg-primary'}`}></span>
                                     {video.activity === 'paragliding' ? 'Bay lượn' : video.activity === 'diving' ? 'Lặn biển' : 'Khác'}
+                                </div>
+                                <div className="absolute top-3 right-3 bg-red-500/80 backdrop-blur-md px-2 py-1 rounded-md text-[10px] text-white font-bold uppercase tracking-wider z-10">
+                                    Preview 10s
                                 </div>
                             </div>
                             <div className="p-5">
